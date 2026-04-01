@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: quiz-service
+          uri: lb://QUIZ-SERVICE
+          predicates:
+            - Path=/quiz/**
+
+        - id: question-service
+          uri: lb://QUESTION-SERVICE
+          predicates:
+            - Path=/question/**
+
+server:
+  port: 8083
